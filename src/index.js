@@ -42,7 +42,7 @@ app.use("/api/carts",cartsRouter)
 app.use("/api/msg",messagesRouter)
 app.use("/api/producto",productsRouter)
 //prueba multer
-app.use("/api/upload", uploadRouter)
+app.use("/", uploadRouter)
 
 app.use("/products", productRouter);
 app.use("/api/cart", CartRouter);

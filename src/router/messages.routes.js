@@ -20,8 +20,8 @@ router.get('/', async (req, res) => {
 
 router.post("/", async (req,res) => {
     let { user, message} = req.body
-    console.log(user)
-    console.log(message)
+   /* console.log(user)
+    console.log(message)*/ // para verificra que falla puede tener
 
     if(!user || !message){
         res.send({status: "error", error: "Faltan datos"});
