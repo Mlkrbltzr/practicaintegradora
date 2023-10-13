@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { messagesModel } from  "../models/messages.model.js"
-
+import mongoose from "mongoose";
 
 
 const router = Router();
@@ -9,7 +9,7 @@ const router = Router();
 
 router.get('/', async (req, res) => {
     try {
-        let messages = await messagesModel.find();
+        let messages = await messageModel.find();
         res.send({ result: "success", payload: messages });
     } catch (error) {
         console.log(error);
@@ -19,11 +19,14 @@ router.get('/', async (req, res) => {
 //post debe seguir los pasos del moderado en la validacion de la creacion del dato en este caso stream
 
 router.post("/", async (req,res) => {
-    let { user, messages} = req.body
-    if(!user || !messages){
+    let { user, message} = req.body
+    console.log(user)
+    console.log(message)
+
+    if(!user || !message){
         res.send({status: "error", error: "Faltan datos"});
     }
-    let result = await messagesModel.create({user, messages});
+    let result = await messagesModel.create({user, message});
     res.send({result:"success", payload: result});
 })
 //put

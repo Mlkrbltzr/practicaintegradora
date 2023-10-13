@@ -47,9 +47,18 @@ app.use("/api/upload", uploadRouter)
 app.use("/products", productRouter);
 app.use("/api/cart", CartRouter);
 
+
+
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", path.resolve(__dirname, "views"));
+
+app.get("/chat", async (req, res) => {
+  res.render("chat", {
+    title: "Chat Mongoose"
+
+  })
+})
 // Resto del código de Socket.io
 
 const User = {};
